@@ -10,12 +10,15 @@ function popup(title,message) {
 	var popup = document.createElement('DIV');
 	popup.className = "popup";
 	popup.id = 'popup'+counter;
-	popup.innerHTML = "<div id='popuptitle"+counter+"' class='title'><span draggable='false'  class='title'>"+title+"</span><div class='close'></div><div class='maximize'></div><div class='minimize'></div></div><p class='message'>"+message+"</p>";
+	popup.innerHTML = "<div id='popuptitle"+counter+"' class='title'><span draggable='false'  class='title'>"+title+"</span><div class='close'></div><div class='maximize'></div><div class='minimize'></div></div><div class='message'>"+message+"</div>";
 	popup.getElementsByClassName('close')[0].addEventListener("click", function() {
 		this.parentElement.parentElement.outerHTML = "";
 	});
 	if (title == "2048") {
 		popup.style = "left: 279.939px; top: 137.458px; width: 423px; height: 515px; background-color:#faf8ef;";
+	}
+	if (title == "Tetris") {
+		popup.style = "left: 279.939px; top: 137.458px; width: 423px; height: 515px; background-color:#000;";
 	}
 	document.body.appendChild(popup);
 	$("#popup"+counter).draggable({ handle:'#popuptitle'+counter, containment: 'window'});
@@ -33,6 +36,9 @@ function icon(icon1,text,code) {
 popup("Welcome to Windows CB","Welcome to Windows ChromeBook. Click the 'x' button to close this popup.");
 icon("2048","2048",function() {
 	popup("2048","<embed src='games/2048/index.html'>");
+});
+icon("tetris","Tetris",function() {
+	popup("Tetris","<embed src='games/tetris/index.html'>");
 });
 icon("2048","Platformer",function() {
 	popup("Platformer",'<object width="480" height="360" data="games/PaintPlatformer.swf">whoops</object>');
